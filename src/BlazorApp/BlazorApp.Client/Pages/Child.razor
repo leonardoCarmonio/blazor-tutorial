@@ -1,0 +1,20 @@
+﻿
+<div class="mt-4">
+    <h5>Componente Filho</h5>
+
+    @if (!string.IsNullOrEmpty(Message))
+    {
+        <p>@Message</p>
+    }
+</div>
+
+@code {
+
+    private string Message { get; set; } = string.Empty;
+
+    public void ShowMessage(string customMessage)
+    {
+        Message = customMessage;
+        StateHasChanged();
+    }
+}

@@ -1,0 +1,32 @@
+﻿@page "/parent"
+@rendermode InteractiveAuto
+
+<div class="container">
+    <h4>Componente Pai</h4>
+    <p>Mudar a data do componente filho através do componente Pai.</p>
+    <a class="btn btn-primary mt-1" @onclick="ChangeText">Mudar data.</a>
+    <Child @ref="_child"></Child>
+    <hr/>
+
+    <div>
+        <p>Componente filho</p>
+        <img src="/images/comp1.png" class="img-fluid" />
+        <p>Devemos informar o método StateHasChanged, responsável por notificar ao Dom que houve uma mudança.</p>
+    </div>
+
+    <div>
+        <p>Componente Pai</p>
+        <img src="/images/comp2.png" class="img-fluid" />
+        <p>Através do recurso @@ref, temos referência ao componente filho, dentro do método ChangeText chamamos o método do componente Child.</p>
+    </div>
+</div>
+
+
+@code {
+    private Child ? _child { get; set; }
+
+    public void ChangeText()
+    {
+        _child?.ShowMessage(DateTime.Now.ToString());
+    }
+}
